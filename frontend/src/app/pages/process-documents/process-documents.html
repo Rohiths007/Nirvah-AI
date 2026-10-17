@@ -1,0 +1,149 @@
+
+<div class="process-page">
+
+  <header class="page-header">
+    <div>
+      <p class="breadcrumb">Workspace / Process Documents</p>
+      <h1>Process Documents</h1>
+      <p class="page-description">
+        Upload government documents and let NIRVAH extract and consolidate
+        company information using local AI.
+      </p>
+    </div>
+
+    <div class="privacy-badge">
+      <span>◆</span> Private &amp; Secure
+    </div>
+  </header>
+
+  <section class="document-types">
+    <article class="type-card">
+      <div class="type-icon financial-icon">₹</div>
+      <h3>Financial Statements</h3>
+      <p>Extract turnover, net profit and net worth.</p>
+      <span class="type-label">FINANCIAL</span>
+    </article>
+
+    <article class="type-card">
+      <div class="type-icon msme-icon">▤</div>
+      <h3>MSME Certificates</h3>
+      <p>Extract Udyam number and enterprise details.</p>
+      <span class="type-label">REGISTRATION</span>
+    </article>
+
+    <article class="type-card">
+      <div class="type-icon tender-icon">▧</div>
+      <h3>Tender Documents</h3>
+      <p>Extract tender reference, value and deadline.</p>
+      <span class="type-label">TENDER</span>
+    </article>
+  </section>
+
+  <section class="upload-panel">
+
+    <div class="section-title">
+      <div>
+        <h2>Upload your documents</h2>
+        <p>Select one or more PDF files for processing.</p>
+      </div>
+
+      <span class="pdf-label">PDF ONLY</span>
+    </div>
+
+    <label
+      class="drop-zone"
+      for="pdfFiles"
+      [class.dragging]="isDragging"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)">
+
+      <div class="upload-icon">↑</div>
+
+      <h3>Drag and drop your PDF files here</h3>
+
+      <p>or click below to browse files from your computer</p>
+
+      <span class="browse-button">Browse PDF Files</span>
+
+      <small>Multiple PDF files supported</small>
+
+      <input
+        id="pdfFiles"
+        type="file"
+        accept=".pdf,application/pdf"
+        multiple
+        (change)="onFilesSelected($event)">
+    </label>
+
+    <div class="selected-header" *ngIf="selectedFiles.length > 0">
+      <h3>Selected Documents ({{ selectedFiles.length }})</h3>
+      <button class="clear-button" (click)="clearFiles()">
+        Clear all
+      </button>
+    </div>
+
+    <div class="file-list" *ngIf="selectedFiles.length > 0">
+      <div class="file-item" *ngFor="let file of selectedFiles; let i = index">
+        <div class="file-icon">PDF</div>
+
+        <div class="file-details">
+          <strong>{{ file.name }}</strong>
+          <span>{{ formatFileSize(file.size) }}</span>
+        </div>
+
+        <button
+          class="remove-button"
+          type="button"
+          aria-label="Remove file"
+          (click)="removeFile(i)">
+          ×
+        </button>
+      </div>
+    </div>
+
+    <div class="upload-error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="upload-success" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+
+    <div class="processing-error" *ngIf="processingError">
+      {{ processingError }}
+    </div>
+
+    <div class="processing-status" *ngIf="isProcessing">
+      <span class="spinner"></span>
+      <div>
+        <strong>Processing your documents...</strong>
+        <p>NIRVAH is analyzing the PDFs and generating your Excel report.</p>
+      </div>
+    </div>
+
+    <div class="upload-actions">
+      <div class="selection-info">
+        <span>◆</span>
+        Your selected files will be sent to the configured local backend.
+      </div>
+
+      <button
+        class="process-button"
+        type="button"
+        [disabled]="selectedFiles.length === 0 || isProcessing"
+        (click)="processDocuments()">
+
+        <span *ngIf="!isProcessing">✦ Process &amp; Export Excel</span>
+        <span *ngIf="isProcessing">Processing...</span>
+      </button>
+    </div>
+
+  </section>
+
+  <footer class="process-footer">
+    <span>NIRVAH · Intelligent Document Processing</span>
+    <span>Financial · MSME · Tender</span>
+  </footer>
+
+</div>

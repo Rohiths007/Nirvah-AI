@@ -1,0 +1,466 @@
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- BRAND -->
+    <div class="brand">
+      <div class="brand-logo">N</div>
+
+      <div class="brand-info">
+        <h2>NIRVAH</h2>
+        <p>Intelligent Document AI</p>
+      </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="sidebar-section">
+      <p class="sidebar-heading">WORKSPACE</p>
+
+      <nav class="sidebar-nav">
+
+        <a
+          routerLink="/dashboard"
+          class="nav-item active">
+
+          <span class="nav-icon">▦</span>
+          <span>Dashboard</span>
+
+        </a>
+
+        <a
+          routerLink="/process-documents"
+          class="nav-item">
+
+          <span class="nav-icon">⇧</span>
+          <span>Process Documents</span>
+
+        </a>
+
+        <a
+         
+  routerLink="/company-records"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: true }"
+  class="nav-item">
+
+  <span class="nav-icon">▤</span>
+  <span>Company Records</span>
+
+
+
+        </a>
+
+        <a
+          href="javascript:void(0)"
+          class="nav-item disabled-item"
+          title="Excel Reports page is coming soon">
+
+          <span class="nav-icon">⇩</span>
+          <span>Excel Reports</span>
+
+          <span class="coming-soon">Soon</span>
+
+        </a>
+
+      </nav>
+    </div>
+
+    <!-- LOCAL AI INFORMATION -->
+    <div class="sidebar-bottom">
+
+      <div class="ai-sidebar-card">
+
+        <div class="ai-sidebar-heading">
+          <span class="ai-icon">✦</span>
+
+          <div>
+            <h4>Local AI Engine</h4>
+            <p>Ollama integration</p>
+          </div>
+        </div>
+
+        <div class="privacy-info">
+          <span class="privacy-dot"></span>
+          Secure · Offline · Private
+        </div>
+
+      </div>
+
+      <div class="sidebar-footer">
+        <span class="footer-logo">N</span>
+
+        <div>
+          <strong>NIRVAH</strong>
+          <p>Intelligent Document AI</p>
+        </div>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- TOP HEADER -->
+    <header class="topbar">
+
+      <div class="page-heading">
+        <p class="breadcrumb">Workspace / Dashboard</p>
+        <h1>Dashboard</h1>
+      </div>
+
+      <div class="topbar-right">
+
+        <div
+          class="system-status"
+          [class.disconnected]="!backendConnected">
+
+          <span class="status-dot"></span>
+
+          <span>{{ backendStatus }}</span>
+
+        </div>
+
+        <div class="profile-avatar" title="NIRVAH">
+          N
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- WELCOME BANNER -->
+    <section class="welcome-banner">
+
+      <div class="welcome-content">
+
+        <span class="eyebrow">
+          DOCUMENT INTELLIGENCE PLATFORM
+        </span>
+
+        <h2>
+          Welcome to NIRVAH 👋
+        </h2>
+
+        <p>
+          Transform government documents into structured company
+          records with local AI-powered analysis and automated
+          Excel reports.
+        </p>
+
+        <a
+          routerLink="/process-documents"
+          class="primary-button">
+
+          <span class="button-icon">＋</span>
+          Process Documents
+
+        </a>
+
+      </div>
+
+
+      <!-- DECORATIVE REPORT CARD -->
+      <div class="welcome-illustration">
+
+        <div class="ai-badge">
+          ✦ AI
+        </div>
+
+        <div class="report-card">
+
+          <div class="excel-icon">X</div>
+
+          <h4>Excel Report</h4>
+
+          <p>Structured data</p>
+
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+
+          <span class="report-caption">
+            Ready for analysis
+          </span>
+
+        </div>
+
+        <div class="document-decoration"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+    <section class="overview-section">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Overview</h2>
+
+          <p>
+            Your document processing workspace at a glance.
+          </p>
+        </div>
+
+        <span class="period-badge">
+          All time
+        </span>
+
+      </div>
+
+
+      <!-- SUMMARY CARDS -->
+      <div class="stats-grid">
+
+        <!-- DOCUMENTS -->
+        <article class="stat-card">
+
+          <div class="stat-card-top">
+
+            <div class="stat-icon documents-icon">
+              ▤
+            </div>
+
+            <span class="stat-category">
+              DOCUMENTS
+            </span>
+
+          </div>
+
+          <h3>0</h3>
+
+          <p class="stat-description">
+            Total documents processed
+          </p>
+
+          <div class="stat-divider"></div>
+
+          <p class="stat-footer">
+            PDF document analysis
+          </p>
+
+        </article>
+
+
+        <!-- COMPANIES -->
+        <article class="stat-card">
+
+          <div class="stat-card-top">
+
+            <div class="stat-icon companies-icon">
+              ▦
+            </div>
+
+            <span class="stat-category">
+              COMPANIES
+            </span>
+
+          </div>
+
+          <h3>0</h3>
+
+          <p class="stat-description">
+            Companies identified
+          </p>
+
+          <div class="stat-divider"></div>
+
+          <p class="stat-footer">
+            Consolidated company records
+          </p>
+
+        </article>
+
+
+        <!-- EXCEL REPORTS -->
+        <article class="stat-card">
+
+          <div class="stat-card-top">
+
+            <div class="stat-icon reports-icon">
+              ⇩
+            </div>
+
+            <span class="stat-category">
+              EXCEL REPORTS
+            </span>
+
+          </div>
+
+          <h3>0</h3>
+
+          <p class="stat-description">
+            Reports generated
+          </p>
+
+          <div class="stat-divider"></div>
+
+          <p class="stat-footer">
+            Automated spreadsheet exports
+          </p>
+
+        </article>
+
+
+        <!-- AI ENGINE -->
+        <article class="stat-card">
+
+          <div class="stat-card-top">
+
+            <div class="stat-icon ai-engine-icon">
+              ✦
+            </div>
+
+            <span class="stat-category">
+              AI ENGINE
+            </span>
+
+          </div>
+
+          <h3>Local AI</h3>
+
+          <p class="stat-description">
+            Ollama integration
+          </p>
+
+          <div class="stat-divider"></div>
+
+          <p class="stat-footer ai-status-footer">
+
+            <span
+              class="status-dot"
+              [class.disconnected]="!backendConnected">
+            </span>
+
+            {{ backendConnected
+              ? 'Backend connected'
+              : backendStatus }}
+
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUICK ACTIONS -->
+    <section class="quick-actions-section">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Quick Actions</h2>
+
+          <p>
+            Start processing your government documents.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="quick-actions-grid">
+
+        <a
+          routerLink="/process-documents"
+          class="quick-action-card">
+
+          <div class="quick-action-icon">
+            ⇧
+          </div>
+
+          <div class="quick-action-content">
+            <h3>Upload Documents</h3>
+
+            <p>
+              Upload financial statements, MSME certificates
+              and tender PDFs.
+            </p>
+          </div>
+
+          <span class="action-arrow">→</span>
+
+        </a>
+
+
+        <div
+          class="quick-action-card unavailable-action"
+          title="This section will be implemented next">
+
+          <div class="quick-action-icon companies-icon">
+            ▤
+          </div>
+
+          <div class="quick-action-content">
+            <h3>Company Records</h3>
+
+            <p>
+              View consolidated company information extracted
+              from documents.
+            </p>
+
+            <span class="coming-soon-label">
+              COMING SOON
+            </span>
+          </div>
+
+        </div>
+
+
+        <div
+          class="quick-action-card unavailable-action"
+          title="This section will be implemented next">
+
+          <div class="quick-action-icon reports-icon">
+            ⇩
+          </div>
+
+          <div class="quick-action-content">
+            <h3>Excel Reports</h3>
+
+            <p>
+              Generate and download structured Excel reports.
+            </p>
+
+            <span class="coming-soon-label">
+              COMING SOON
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRIVACY NOTICE -->
+    <footer class="dashboard-footer">
+
+      <div>
+        <strong>NIRVAH</strong>
+
+        <span>
+          Intelligent Document Analysis &amp; Excel Automation
+        </span>
+      </div>
+
+      <div class="footer-privacy">
+        <span class="privacy-dot"></span>
+        Local AI · Privacy-focused processing
+      </div>
+
+    </footer>
+
+  </main>
+
+</div>

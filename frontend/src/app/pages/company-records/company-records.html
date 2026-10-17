@@ -1,0 +1,143 @@
+<div class="company-page">
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div>
+      <p class="breadcrumb">Workspace / Company Records</p>
+      <h1>Company Records</h1>
+      <p class="page-description">
+        View and search company information extracted from government documents.
+      </p>
+    </div>
+
+    <div class="page-badge">
+      <span>◆</span> Company Directory
+    </div>
+  </header>
+
+  <!-- SUMMARY CARDS -->
+  <section class="summary-grid">
+
+    <article class="summary-card">
+      <div class="summary-icon companies-icon">▦</div>
+      <p class="summary-label">TOTAL COMPANIES</p>
+      <h2>{{ companies.length }}</h2>
+      <span class="summary-note">Companies available in this session</span>
+    </article>
+
+    <article class="summary-card">
+      <div class="summary-icon financial-icon">₹</div>
+      <p class="summary-label">FINANCIAL RECORDS</p>
+      <h2>—</h2>
+      <span class="summary-note">Financial data availability</span>
+    </article>
+
+    <article class="summary-card">
+      <div class="summary-icon document-icon">▤</div>
+      <p class="summary-label">DOCUMENT RECORDS</p>
+      <h2>—</h2>
+      <span class="summary-note">Extracted document information</span>
+    </article>
+
+  </section>
+
+  <!-- COMPANY DIRECTORY -->
+  <section class="records-panel">
+
+    <div class="records-header">
+      <div>
+        <h2>Company Directory</h2>
+        <p>Search your available company records.</p>
+      </div>
+
+      <span class="record-count">
+        {{ filteredCompanies.length }} records
+      </span>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-area">
+      <span class="search-icon">⌕</span>
+
+      <input
+        type="text"
+        placeholder="Search by company name..."
+        aria-label="Search companies"
+        (input)="searchCompanies($event)">
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-wrapper" *ngIf="filteredCompanies.length > 0; else emptyState">
+
+      <table>
+        <thead>
+          <tr>
+            <th>COMPANY NAME</th>
+            <th>RECORD STATUS</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let company of filteredCompanies">
+            <td>
+              <div class="company-name">
+                <span class="company-avatar">▦</span>
+                <strong>{{ company.name }}</strong>
+              </div>
+            </td>
+
+            <td>
+              <span class="record-status">Available</span>
+            </td>
+
+            <td>
+              <button
+                type="button"
+                class="view-button"
+                disabled
+                title="Company details will be available after data integration">
+                View Details
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <ng-template #emptyState>
+      <div class="empty-state">
+        <div class="empty-icon">▤</div>
+
+        <h3>
+          {{ searchText ? 'No matching companies found' : 'No company records yet' }}
+        </h3>
+
+        <p>
+          {{
+            searchText
+              ? 'Try searching with a different company name.'
+              : 'Process your government PDF documents to get started. Company records will appear here when the data source is connected.'
+          }}
+        </p>
+
+        <a
+          *ngIf="!searchText"
+          routerLink="/process-documents"
+          class="upload-button">
+          ↑ Process Documents
+        </a>
+      </div>
+    </ng-template>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span>NIRVAH · Company Records</span>
+    <span>Local AI · Privacy-focused processing</span>
+  </footer>
+
+</div>

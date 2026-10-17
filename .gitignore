@@ -1,0 +1,42 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environment
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Uploaded documents and private data
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Generated storage data
+backend/storage/*
+!backend/storage/.gitkeep
+
+# Angular dependencies
+frontend/node_modules/
+
+# Angular build output
+frontend/dist/
+frontend/.angular/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
